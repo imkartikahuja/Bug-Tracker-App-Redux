@@ -1,4 +1,5 @@
 import configureStore from "./store/configureStore";
+import { addBug, loadBugs, resolveBug, assignBugToUser } from "./store/bugs";
 // import {
 //   bugAdded,
 //   bugResolved,
@@ -11,6 +12,14 @@ import configureStore from "./store/configureStore";
 
 const store = configureStore();
 
+//CALLING API
+// store.dispatch(addBug({ description: "a" }));
+
+store.dispatch(loadBugs());
+
+setTimeout(() => store.dispatch(assignBugToUser(1, 4)), 2000);
+setTimeout(() => store.dispatch(resolveBug(1)), 2000);
+
 // store.dispatch((dispatch, getState) => {
 //   // Call an API
 //   // When the promise is resolved => dispatch()
@@ -19,10 +28,10 @@ const store = configureStore();
 //   // If the promise is rejected => dispatch()
 // });
 
-store.dispatch({
-  type: "error",
-  payload: { message: "An error occurred." },
-});
+// store.dispatch({
+//   type: "error",
+//   payload: { message: "An error occurred." },
+// });
 
 // store.dispatch(userAdded({ name: "Kartik Ahuja" }));
 // store.dispatch(userAdded({ name: "User 2" }));
